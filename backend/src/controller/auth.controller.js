@@ -25,13 +25,15 @@ const registerUser=asyncHandler(async(req,res)=>{
         password
 
     })
-//remove password 
+
+    const accessToken=user.generateAccessToken();
+    const refreshToken=user.generateRefreshToken();
+    //remove password  before sending response
     const createdUser=await User.findById(user._id).select("-password")
     if(!createdUser){
         throw new ApiError(500,"something went wrong:user not created")
     }
-    const accessToken=user.generateAccessToken();
-    const refreshToken=user.generateRefreshToken();
+
     
     return res.status(201)
     .cookie("accessToken",accessToken,{
@@ -50,7 +52,7 @@ const loginUser=asyncHandler(async(req,res)=>{
     //get the login details from frontend
     const {email,password}=req.body
     if(!email||!password){
-        throw new ApiError(409,"missing login  details")
+        throw new ApiError(400,"missing login  details")
     }
     //check user exists or not 
     const userExists=await User.findOne({email})
@@ -63,8 +65,12 @@ const loginUser=asyncHandler(async(req,res)=>{
          throw new ApiError(401,"incorrect password")
     }
 
+
     const accessToken= userExists.generateAccessToken()
     const refreshToken=userExists.generateRefreshToken()
+
+    //sending reponse after removing the password
+    const LoggedUser=await User.findById(userExists._id).select("-password")
 
         return res.status(200)
         .cookie("accessToken",accessToken,{
@@ -75,12 +81,13 @@ const loginUser=asyncHandler(async(req,res)=>{
             httpOnly:true,
             secure:true
         })
-        .json(new ApiResponse(200,"login successful",userExists))
+        .json(new ApiResponse(200,"login successful",LoggedUser))
 })
 
 
 
 const logout=asyncHandler(async(req,res)=>{
+    //clear cookies to logout user 
     return res.status(200)
     .clearCookie("accessToken")
     .clearCookie("refreshToken")
