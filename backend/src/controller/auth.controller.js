@@ -7,11 +7,13 @@ import ApiResponse from '../utils/ApiResponse.js'
 
 
 const registerUser=asyncHandler(async(req,res)=>{
+    //get details from frontend check for all fields
     const{name,email,password}=req.body
 
     if(!name||!email||!password){
     throw new ApiError(400,"details  required for registraion")
     }
+    //check for is already user registered
     const existedUser=await User.findOne({email})
     if(existedUser){
         throw new ApiError(409,"user already exists")
@@ -23,13 +25,13 @@ const registerUser=asyncHandler(async(req,res)=>{
         password
 
     })
-
+//remove password 
     const createdUser=await User.findById(user._id).select("-password")
     if(!createdUser){
         throw new ApiError(500,"something went wrong:user not created")
     }
-    const accessToken=createdUser.generateAccessToken();
-    const refreshToken=createdUser.generateRefreshToken();
+    const accessToken=user.generateAccessToken();
+    const refreshToken=user.generateRefreshToken();
     
     return res.status(201)
     .cookie("accessToken",accessToken,{
@@ -45,15 +47,18 @@ const registerUser=asyncHandler(async(req,res)=>{
 })
 
 const loginUser=asyncHandler(async(req,res)=>{
+    //get the login details from frontend
     const {email,password}=req.body
     if(!email||!password){
         throw new ApiError(409,"missing login  details")
     }
+    //check user exists or not 
     const userExists=await User.findOne({email})
     if(!userExists){
         throw new ApiError(404,"user not found")
     }
-    const checkPassword=await bcrypt.compare(password,this.password)
+    //check passsword is correct or not 
+    const checkPassword=await userExists.matchPassword(password)
     if(!checkPassword){
          throw new ApiError(401,"incorrect password")
     }
