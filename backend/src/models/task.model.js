@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import Student from '../models/student.model.js'
+import User from './user.model.js';
 const taskSchema=new mongoose.Schema({
     title:{
         required:[true,"task title is required"],
@@ -14,7 +15,7 @@ const taskSchema=new mongoose.Schema({
     },
     Student:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Student ",
+        ref:"Student",
         required:true,
 
     },
@@ -22,6 +23,12 @@ const taskSchema=new mongoose.Schema({
         type:String,
         enum:["not assigned","assigned","completed","pending"],
         default:"not assigned"
+    },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+
     }
 
 
