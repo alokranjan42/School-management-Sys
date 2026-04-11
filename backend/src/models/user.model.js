@@ -21,7 +21,41 @@ const userSchema=new mongoose.Schema({
         minLength:[6,"minimum 6 length required"]
     }
 
+
 },{timestamps:true});
+
+userSchema.pre("save",async function(next){
+    if(!this.isModified("Password")) return next();
+    this.password=await bcrypt.hash(password,10)
+    next();
+})
+
+userSchema.methods.matchPassword=function(password){
+    return bcrypt.compare(password,this.password)
+}
+
+userSchema.method.generateAccessToken=function(){
+    return jwt.sign({
+        id:this._id
+
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+     expiresIn:"15m"
+    })
+}
+
+userSchema.methods.generateRefreshToken=function(){
+    return jwt.sign(
+    {
+        id:this._id
+    },
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+        expiresIn:"7d"
+
+    })
+}
 
 const User =mongoose.model("User",userSchema)
 export  default User;
