@@ -13,7 +13,7 @@ const taskSchema=new mongoose.Schema({
         type:String,
         maxLength:500,
     },
-    Student:{
+    student:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Student",
         required:true,
