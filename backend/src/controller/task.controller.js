@@ -7,8 +7,8 @@ import ApiResponse from '../utils/ApiResponse.js'
 const createTask=asyncHandler(async(req,res)=>{
 
     //req data from frontend
-    const {title,description,status,studentId}=req.body
-    if(!title||!description||!status ||!studentId){
+    const {title,description,status,student}=req.body
+    if(!title||!description||!status ||!student){
         throw new ApiError(400,"missing details to create Task")
     }
     //if data come from frontend then create a task
@@ -16,7 +16,7 @@ const createTask=asyncHandler(async(req,res)=>{
         title,
         description,
         status,
-        student:studentId,
+        student:student,
         createdBy:req.user._id
 
     })
@@ -37,7 +37,7 @@ const getTaskById=asyncHandler(async(req,res)=>{
 
 const getTask=asyncHandler(async(req,res)=>{
     //find all task 
-    const task=await Task.find({}).populate("assignedTo")
+    const task=await Task.find({}).populate("student")
     return res.status(200)
     .json(new ApiResponse(200,"here are Tasks",task))
 })
