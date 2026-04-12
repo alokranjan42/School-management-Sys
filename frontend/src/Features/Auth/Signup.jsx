@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import api from '../../Api/Api'
-
+import '../../Shared/Styles.css'
 
 function Signup() {
     const[message,setMessage]=useState("")
@@ -20,7 +20,7 @@ function Signup() {
     e.preventDefault()
 
     try {
-        const res=await api.post("/auth/signup",{
+        const res=await api.post("/auth/register",{
             name,email,password
         } )
       setMessage("register successful");
@@ -41,19 +41,22 @@ function Signup() {
             <input type="text" 
             placeholder="enter name"
             value={name}
-            onChange={(e)=>setName(e.target.value)}  />
+            onChange={(e)=>setName(e.target.value)} 
+            className="input-text" />
             <input type="email" 
              placeholder="enter email"
              value={email}
              onChange={(e)=>setEmail(e.target.value)}
+             className="input-text"
              />
             <input type="password"  
             placeholder="enter password"
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
+            className="input-text"
             />
-          <button type="submit" >Submit</button>
-          <p onClick={handleLogin}>Already Registered </p>
+          <button type="submit" className="btn" >Submit</button>
+          <p className="auth-para">Already Registered <button onClick={handleLogin} className="btn2">Login</button> </p>
         </form>
       
     </div>

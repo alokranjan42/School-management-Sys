@@ -1,0 +1,39 @@
+.dashboard-main{
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+       
+}
+.dashboard-btn{
+    width:180px;
+    border:none;
+    color:white;
+    background-color:lightseagreen;
+    height:35px;
+   
+}
+ 
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin:30px; 
+    height:100%;
+    margin-top:70px;
+    max-height:1000px;
+    padding:60px;
+
+    
+}
+.component-container{
+    display: flex;
+    flex-direction: column;
+    gap:130px;
+  
+}
+.card2{
+    border:2px solid black;
+}
+ 

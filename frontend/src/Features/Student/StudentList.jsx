@@ -34,7 +34,8 @@ function StudentList() {
     }
   return (
     <>
-    <div>
+    <div className="dashboard-containers">
+      <h4 className="student-heading">Student List</h4>
       {student.map((student)=>(
         <div key={student._id}
          onClick={() => handleStudentProfile(student._id)}>

@@ -65,7 +65,7 @@ function StudentProfile() {
 
   return (
     <>
-      <div className="main-container">
+      <div className="dashboard-containers">
         <h2>Student Profile</h2>
 
         <form onSubmit={handleUpdateStudent} className="form-container">

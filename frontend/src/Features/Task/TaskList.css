@@ -1,0 +1,43 @@
+.taskList-heading{
+    font-size:22px;
+    padding:2px;
+}
+
+.taskList-title{
+    font-size:13px;
+}
+ .taskTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.taskTable th,
+.taskTable td {
+  padding: 20px 34px;
+  width:400px;
+  border-bottom: 1px solid #ddd;
+  text-align:left;
+}
+
+.taskTable th {
+  font-weight: bold;
+}
+
+ .completedBtn{
+ color:white;
+ background-color:green;
+ border:none;
+ border-radius:4px;
+ width:90px;
+ height:30px;
+   }
+ .markBtn{
+ color:white;
+ background-color:crimson;
+ border:none;
+ border-radius:4px;
+ width:90px;
+ height:30px;
+ }
+
+ 
