@@ -24,6 +24,7 @@ function Signup() {
             name,email,password
         } )
       setMessage("register successful");
+      localStorage.setItem("isLoggedIn", "true");
       navigate("/dashboard")
    
     } catch (error) {

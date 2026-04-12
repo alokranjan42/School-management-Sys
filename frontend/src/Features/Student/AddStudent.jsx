@@ -15,7 +15,10 @@ function AddStudent() {
             const addStudent=await api.post("/students",{
                 name,className,roll
             })
-            setMessage("student added");  
+            setMessage("student added"); 
+            setName("");
+            setRoll("");
+            setclassName(""); 
         } catch (error) {
             console.log("error occured while adding",error.message);
              setMessage("student not added");

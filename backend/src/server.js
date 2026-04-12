@@ -7,7 +7,7 @@ const PORT=3005
 dotenv.config()
 dbConnect()
 .then(()=>{
-    app.listen(PORT||process.env.PORT,()=>{
+    app.listen(process.env.PORT||PORT,()=>{
         console.log(`server is running on port :${process.env.PORT}`);
     })
 })

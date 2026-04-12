@@ -20,6 +20,7 @@ function Login() {
              const loginres=await api.post("/auth/login",{
                  email,password
              })
+             localStorage.setItem("isLoggedIn", "true");
              setMessage("login successful");
              navigate("/dashboard");
          } catch (error) {
