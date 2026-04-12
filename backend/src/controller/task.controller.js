@@ -37,7 +37,7 @@ const getTaskById=asyncHandler(async(req,res)=>{
 
 const getTask=asyncHandler(async(req,res)=>{
     //find all task 
-    const task=await Task.find({})
+    const task=await Task.find({}).populate("assignedTo")
     return res.status(200)
     .json(new ApiResponse(200,"here are Tasks",task))
 })
