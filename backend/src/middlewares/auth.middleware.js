@@ -1,9 +1,11 @@
 import asyncHandler from "../utils/AsyncHandler.js";
 import ApiError from '../utils/ApiError.js'
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 const authMiddleware=asyncHandler(async(req,res,next)=>{
-    const token=req.cookies.accessToken
+    const token=req.cookies.accessToken ||
+  req.header("Authorization")?.replace("Bearer ", "");
     if(!token){
         throw new ApiError(404,"token not found");
     }

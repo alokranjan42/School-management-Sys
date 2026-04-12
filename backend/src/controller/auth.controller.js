@@ -68,6 +68,7 @@ const loginUser=asyncHandler(async(req,res)=>{
 
     const accessToken= userExists.generateAccessToken()
     const refreshToken=userExists.generateRefreshToken()
+    console.log(accessToken)
 
     //sending reponse after removing the password
     const LoggedUser=await User.findById(userExists._id).select("-password")
@@ -81,7 +82,11 @@ const loginUser=asyncHandler(async(req,res)=>{
             httpOnly:true,
             secure:true
         })
-        .json(new ApiResponse(200,"login successful",LoggedUser))
+        .json(new ApiResponse(200,"login successful", {
+    user: LoggedUser,
+    accessToken,
+    refreshToken
+  }))
 })
 
 

@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 import dbConnect from './db/db.js'
 
 
-dotenv()
+const PORT=3005
+dotenv.config()
 dbConnect()
 .then(()=>{
     app.listen(PORT||process.env.PORT,()=>{

@@ -1,5 +1,5 @@
 import asyncHandler from "../utils/AsyncHandler.js";
-import ApiResponse from "../utils/ApiRespone.js";
+import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import Student from '../models/student.model.js'
 
@@ -32,6 +32,16 @@ const getStudents=asyncHandler(async(req,res)=>{
     const students=await Student.find({})
     return res.status(200)
     .json(new ApiResponse(200,"All Students are ..",students))
+})
+
+const getStudentById=asyncHandler(async(req,res)=>{
+    const {id}=req.params
+    const student=await Student.findById(id)
+    if(!student){
+        throw new ApiError(404,"student not found")
+    }
+    return res.status(200)
+    .json(new ApiResponse(200,"student found",student))
 })
 const updateStudent=asyncHandler(async(req,res)=>{
     //find id from url and update students fields
@@ -73,5 +83,6 @@ export {
     getStudents,
      registerStudent,
      updateStudent,
-     deleteStudent
+     deleteStudent,
+     getStudentById
 }
