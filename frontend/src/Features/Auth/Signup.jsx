@@ -1,6 +1,7 @@
 import React from 'react'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import api from '../../Api/Api'
 
 
 function Signup() {
@@ -10,42 +11,47 @@ function Signup() {
     const [password,setPassword]=useState("")
 
     const navigate=useNavigate();
+
     const handleLogin=()=>{
         navigate("/login");
     }
-     const handleDashboard=()=>{
-        navigate("/dashboard");
+     
+    const handleSubmit=async(e)=>{
+    e.preventDefault()
+
+    try {
+        const res=await api.post("/auth/signup",{
+            name,email,password
+        } )
+      setMessage("register successful");
+      navigate("/dashboard")
+   
+    } catch (error) {
+        console.log("error occured while signup",error.message);
+         setMessage("register unsuccessful");  
     }
-
-    useEffect(()=>{
-        const signup=async()=>{
-            try {
-                const res=await API.post("" ,{
-                    name,email,password
-                });
-                
-                setMessage("registration succesful");
-                setName("");
-                setEmail("");
-                setPassword("");
-
-                
-            } catch (error) {
-                console.log(error.message,"error occured while register")
-                setMessage("not registered"); 
-            }
-        }
-        signup()
-    },[])
+   
+ }
   return (
     <>
     <div className="main-container">
          <h2>Admin Signup</h2>
-        <form action="" className="form-container">
-            <input type="text" placeholder="enter name"  />
-            <input type="email"  placeholder="enter email"/>
-            <input type="password"  placeholder="enter password"/>
-          <button onClick={handleDashboard}>Submit</button>
+        <form onSubmit={handleSubmit} className="form-container">
+            <input type="text" 
+            placeholder="enter name"
+            value={name}
+            onChange={(e)=>setName(e.target.value)}  />
+            <input type="email" 
+             placeholder="enter email"
+             value={email}
+             onChange={(e)=>setEmail(e.target.value)}
+             />
+            <input type="password"  
+            placeholder="enter password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            />
+          <button type="submit" >Submit</button>
           <p onClick={handleLogin}>Already Registered </p>
         </form>
       
