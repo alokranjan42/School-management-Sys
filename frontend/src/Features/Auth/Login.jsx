@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 import './Login.css'
 import api from '../../Api/Api'
+import '../../Shared/Styles.css'
 
 function Login() {
     const [email,setEmail]=useState("");
@@ -40,14 +41,17 @@ function Login() {
             <input type="email"
              placeholder="enter email"
              value={email}
-             onChange={(e)=>setEmail(e.target.value)} />
+             onChange={(e)=>setEmail(e.target.value)} 
+             className="input-text"
+             />
             <input type="password" 
             placeholder="enter password" 
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
+            className="input-text"
             />
-            <button type="submit">Login</button>
-            <p onClick={handleSignup}>not registered </p>
+            <button type="submit" className="btn">Login</button>
+            <p  className="auth-para">Not Registered <button onClick={handleSignup} className="btn2">sign up</button> </p>
         </form>
       
     </div>

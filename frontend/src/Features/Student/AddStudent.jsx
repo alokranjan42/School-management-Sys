@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import api from '../../Api/Api'
+import  "./AddStundent.css"
 function AddStudent() {
 
     const [name,setName]=useState("");
@@ -26,15 +27,13 @@ function AddStudent() {
     }
   return (
     <>
-    <div>
-        
-        <form onSubmit={handleAddStudent}>
+    <div className="dashboard-containers">
+        <h4 className="addStudent-heading">Add Student </h4>
+        <form onSubmit={handleAddStudent} className="addStudent-form">
         <input type="text" 
         placeholder="enter name"
         value={name}
         onChange={(e)=>setName(e.target.value)} />
-
-
         <input type="text"  
         placeholder="enter roll"
         value={roll}

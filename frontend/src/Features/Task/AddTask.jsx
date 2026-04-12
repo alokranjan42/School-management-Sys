@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
 import api from '../../Api/Api'
-
+import './AddTask.css'
 
 function AddTask() {
     const[title,setTitle]=useState("")
@@ -48,31 +48,37 @@ function AddTask() {
     }
   return (
     <>
-    <div className="main-container">
+    <div className="dashboard-containers">
+      <h4 className="addTask-heading">Add Task</h4>
       <form onSubmit={handleAddTask} className="form-container">
       <input type="text"
       placeholder="Add title"
       value={title}
       onChange={(e)=>setTitle(e.target.value)}
+      className="addTask-input"
        />
-      <input type="text" 
+      <textarea name="" id="" 
       value={description}
       placeholder="Add description"
       onChange={(e)=>setDescription(e.target.value)}
-      />
+       className="addTask-textArea">
+      
+      </textarea>
     
     {/* task status of student  */}
     <select value={status} 
-    onChange={(e)=>setStatus(e.target.value)}>
-        <option value=""> select status</option>
-        <option value="assigned">assigned</option>
-         <option value="not assigned">not assigned</option>
-        <option value="pending">pending</option>
-        <option value="completed">completed</option>
+    onChange={(e)=>setStatus(e.target.value)}
+    className="addTask-select">
+        <option value="" className="addTask-option"> select status</option>
+        <option value="assigned"  className="addTask-option" >assigned</option>
+         <option value="not assigned" className="addTask-option">not assigned</option>
+        <option value="pending" className="addTask-option">pending</option>
+        <option value="completed" className="addTask-option">completed</option>
     </select>
     {/* add task to student */}
     <select  value={student}
-     onChange={(e)=>setStudent(e.target.value)}>
+     onChange={(e)=>setStudent(e.target.value)}
+      className="addTask-select">
       <option value="">select students</option>
        {students.map((item)=>(
         <option key={item._id} value={item._id}>
@@ -82,12 +88,13 @@ function AddTask() {
 
     </select>
 
-    <button type="submit">Add task</button>
+    <button type="submit" className="addTaskBtn">Add task</button>
 
 
       </form>
+     {message && <p className="addTask-message"> {message}</p> } 
     </div>
-    {message && <p>{message}</p>}
+    
     </>
   )
 }

@@ -1,0 +1,54 @@
+.form-container{
+    display: flex;
+    gap:20px;
+    
+}
+.addTask-heading{
+    font-size:22px;
+    padding:2px;
+}
+.addTask-input{
+     color:black;
+     height:30px;
+     border-radius:6px;
+     outline:none;
+
+}
+.addTask-textArea{
+     color:black;
+     height:130px;
+     border-radius:6px;
+     outline:none;
+
+}
+.addTask-select{
+    height:25px;
+    border-radius:6px;
+    outline:none;
+
+}
+.addTask-option{
+     border-radius:6px;
+     outline:none;
+      height:25px;
+
+}
+.addTaskBtn{
+    border:none;
+    height:30px;
+    border-radius:6px;
+    color:white;
+    background:lightcoral;
+
+}
+.addTask-message{
+    position: absolute;
+    right:450px;
+    border:none;
+    color:white;
+    background-color: blue;
+    width:80px;
+    padding:8px;
+    border-radius:10px;
+   
+}
