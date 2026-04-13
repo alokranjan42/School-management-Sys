@@ -1,6 +1,7 @@
- import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../Api/Api'
+import "./StudentProfile.css"
 
 function StudentProfile() {
   const { id } = useParams()
@@ -65,15 +66,17 @@ function StudentProfile() {
 
   return (
     <>
-      <div className="dashboard-containers">
-        <h2>Student Profile</h2>
-
+     <h2 className="main-heading">School Management System</h2>
+      <div className="studentProfile-containers">
+          <h4 className="studentProfile-heading">Student Profile</h4>
+  
         <form onSubmit={handleUpdateStudent} className="form-container">
           <input
             type="text"
             placeholder="enter name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="studentProfile-input"
           />
 
           <input
@@ -81,6 +84,7 @@ function StudentProfile() {
             placeholder="enter roll"
             value={roll}
             onChange={(e) => setRoll(e.target.value)}
+            className="studentProfile-input"
           />
 
           <input
@@ -88,14 +92,15 @@ function StudentProfile() {
             placeholder="enter class name"
             value={className}
             onChange={(e) => setClassName(e.target.value)}
+            className="studentProfile-input"
           />
 
-          <button type="submit">Update Student</button>
+          <button type="submit" className="updateProfilebtn">Update Student</button>
         </form>
 
-        <button onClick={handleDeleteStudent}>Delete Student</button>
+        <button onClick={handleDeleteStudent} className="deleteProfilebtn">Delete Student</button>
 
-        {message && <p>{message}</p>}
+        {message && <p className="event-message">{message}</p>}
       </div>
     </>
   )

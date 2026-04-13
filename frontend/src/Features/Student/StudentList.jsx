@@ -2,6 +2,7 @@ import React from 'react'
 import {useEffect,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import api from '../../Api/Api'
+import './StudentList.css'
 
 function StudentList() {
   const[ student,setStudent]=useState([])
@@ -34,22 +35,39 @@ function StudentList() {
     }
   return (
     <>
-    <div className="dashboard-containers">
-      <h4 className="student-heading">Student List</h4>
-      {student.map((student)=>(
-        <div key={student._id}
-         onClick={() => handleStudentProfile(student._id)}>
-          <h4>{student.name}</h4>
-          <p>{student.roll}</p>
-          <p>{student.className}</p>
+     <div className="dashboard-containers">
+  <h4 className="student-heading">Student List</h4>
 
-        </div>
+  <table className="studentTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>className</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {student.map((item) => (
+        <tr
+          key={item._id}
+         
+          className="student-row"
+        >
+          <td><h4>{item.name}</h4> <p className="studentList-view" 
+          onClick={() => handleStudentProfile(item._id)}>view</p></td>
+
+          <td>{item.roll}</td>
+          <td>{item.className}</td>
+        </tr>
       ))}
-      
-    </div>
+    </tbody>
+  </table>
+</div>
  
     </>
   )
 }
 
 export default StudentList
+ 

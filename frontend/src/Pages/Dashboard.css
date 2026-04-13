@@ -6,7 +6,10 @@
        
 }
 .dashboard-btn{
-    width:180px;
+    position:absolute;
+    right:40px;
+    top:20px;
+    width:160px;
     border:none;
     color:white;
     background-color:lightseagreen;

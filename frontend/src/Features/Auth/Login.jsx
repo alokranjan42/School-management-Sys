@@ -1,7 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
-import './Login.css'
 import api from '../../Api/Api'
 import '../../Shared/Styles.css'
 
@@ -35,6 +34,7 @@ function Login() {
 
   return (
     <>
+    <h2 className="main-heading">School Management System</h2>
     <div className="main-container">
      <h2>Admin Login</h2>
         <form onSubmit={handleLogin} className="form-container">
