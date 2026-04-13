@@ -33,22 +33,25 @@ function AddStudent() {
         <input type="text" 
         placeholder="enter name"
         value={name}
-        onChange={(e)=>setName(e.target.value)} />
+        onChange={(e)=>setName(e.target.value)}
+        className="addStudent-text" />
         <input type="text"  
         placeholder="enter roll"
         value={roll}
         onChange={(e)=>setRoll(e.target.value)}
+         className="addStudent-text" 
         />
          <input type="text"  
         placeholder="enter className"
         value={className}
         onChange={(e)=>setclassName(e.target.value)}
+         className="addStudent-text" 
         />
-        <button type="submit">Add Student</button>
+        <button type="submit" className="AddStudentbtn">Add Student</button>
         </form>
       
     </div>
-    {message && <p>{message}</p>}
+    {message && <p className="event-message">{message}</p>}
     </>
   )
 }

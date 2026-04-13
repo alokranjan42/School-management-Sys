@@ -1,0 +1,37 @@
+.studentProfile-containers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:130px;
+    border:none;
+    min-height:500px;
+    margin-left:90px;
+    height:auto;
+    width:1200px;
+    border-radius:32px;
+    box-shadow: 0 4px 8px  lightseagreen;
+
+}
+.studentProfile-heading{
+    padding:5px;
+    font-size:23px;
+}
+.studentProfile-input{
+    height:27px;
+    outline:none;
+    border-radius:5px;
+}
+.updateProfilebtn{
+    width:300px;
+    height:30px;
+    border-radius:7px;
+    color:white;
+    background-color:cornflowerblue;
+}
+.deleteProfilebtn{
+    width:300px;
+    height:30px;
+    border-radius:7px;
+    color:white;
+    background-color:red;
+}

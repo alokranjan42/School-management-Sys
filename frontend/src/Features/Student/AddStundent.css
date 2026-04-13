@@ -1,6 +1,30 @@
+.addStudent-heading{
 
+    font-size:23px;
+}
 .addStudent-form{
     display: flex;
     flex-direction: column;
-    gap:15px;
+    gap:17px;
+    padding:20px;
+    margin-top:30px;
+}
+.addStudent-heading{
+
+
+}
+.addStudent-text{
+     color:black;
+     height:30px;
+     border-radius:6px;
+     outline:none;
+     width:350px;
+
+}
+.AddStudentbtn{
+    color:white;
+    background-color: lightcoral;
+    border:none;
+    height:30px;
+    border-radius:7px;
 }

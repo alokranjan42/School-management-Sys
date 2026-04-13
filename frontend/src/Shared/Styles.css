@@ -1,14 +1,20 @@
 .main-container{
-    width: 400px;
-    max-width: 100%;
-    background-color: antiquewhite;
-    padding: 100px;
-    margin: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 400px;
+    background-color: antiquewhite;
+    padding: 100px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
     border-radius:10px;
+    margin: 50px auto;
+}
+.main-heading{
+    font-size:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .form-container{
     display:flex;
@@ -56,7 +62,8 @@
     flex-direction: column;
     align-items: center;
     border:none;
-    height:500px;
+    min-height:500px;
+    height:auto;
     width:1200px;
     border-radius:32px;
     box-shadow: 0 4px 8px  lightseagreen;
@@ -72,6 +79,16 @@
     padding:8px;
     border-radius:10px;
 
+}
+.dashboard-largeContainers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:none;
+   
+    width:1200px;
+    border-radius:32px;
+    box-shadow: 0 4px 8px  lightseagreen;
 }
 
 

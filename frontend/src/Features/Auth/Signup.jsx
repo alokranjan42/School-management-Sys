@@ -35,6 +35,7 @@ function Signup() {
  }
   return (
     <>
+     <h2 className="main-heading">School Management System</h2>
     <div className="main-container">
          <h2>Admin Signup</h2>
         <form onSubmit={handleSubmit} className="form-container">

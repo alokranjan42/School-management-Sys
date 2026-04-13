@@ -15,14 +15,14 @@ function TaskList() {
       try {
         const taskres = await api.get("/task");
         setTask(taskres.data.data);
-        const { id } = useParams();
+        
 
       } catch (error) {
         console.log("error occured while fetching tasks", error.message);
       }
     }
     fetchTask()
-  }, [id])
+  }, [])
 
   const handleMarkCompleted = async (id) => {
     try {

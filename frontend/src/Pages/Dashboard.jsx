@@ -15,16 +15,17 @@ function Dashboard() {
   }
   return (
     <>
+     <h2 className="main-heading">School Management System</h2>
      <div  className="dashboard-main">
      <h3  className='dashboard-heading'>Dashboard</h3>
       <button onClick={handleLogout} className="dashboard-btn" >Logout</button>
       </div>
      <div className="dashboard-container">
       <div className="component-container">
-      <AddTask  />
-      <TaskList  />
-      <AddStudent  />
-      <StudentList />
+      <AddStudent />
+      <AddTask/>
+      <TaskList />
+      <StudentList/>
       </div>
     </div>
     </>

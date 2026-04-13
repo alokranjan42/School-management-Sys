@@ -12,6 +12,7 @@
      height:30px;
      border-radius:6px;
      outline:none;
+     width:350px;
 
 }
 .addTask-textArea{
@@ -19,18 +20,21 @@
      height:130px;
      border-radius:6px;
      outline:none;
+     width:350px;
 
 }
 .addTask-select{
     height:25px;
     border-radius:6px;
     outline:none;
+    width:350px;
 
 }
 .addTask-option{
      border-radius:6px;
      outline:none;
       height:25px;
+      width:350px;
 
 }
 .addTaskBtn{
@@ -39,6 +43,7 @@
     border-radius:6px;
     color:white;
     background:lightcoral;
+    width:350px;
 
 }
 .addTask-message{
